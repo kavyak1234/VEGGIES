@@ -1,35 +1,29 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from .models import Product
-from django.contrib.auth.models import User
-from django.contrib import messages
-
-
-def home(request):
-    return render(request, 'home.html')
 
 def search(request):
-    query = request.GET.get('q')
-    products = product.objects.filter(name__icontains=query)
-    return render(request,'search_results.html', { 'products': products,'query' : query})
-
-def signup(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST('email')
-        password = request.POST('password')
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Username already exists')
-            return redirect('signup')  # Or render signup page again
-
-        user = User.objects.create_user(username=username, password=password)
-        user.save()
-        return redirect('login')  # After successful signup
-
-    # This will handle GET requests and show the signup form
-    return render(request, 'store/signup_result.html')
-
-    
-
-def signin(request):
-    query = request.GET.get('q')
-    return render(request,'signin_results.html', {'query' : query})
+    return render(request,'search_results.html')
+def home(request):
+    products = [
+        {
+            "name": "Mango Dasheri",
+            "weight": "700 Gm",
+            "original_price": 70,
+            "discounted_price": 48.13,
+            "discount": 31,
+            "image_url": "/static/images/mango-dasheri.jpg"
+        },
+        {
+            "name": "Plum",
+            "weight": "500 Gm",
+            "original_price": 100,
+            "discounted_price": 75,
+            "discount": 25,
+            "image_url": "/static/images/plum.jpg"
+        },
+        # Add more products similarly...
+    ]
+    return render(request, 'index.html', {'products': products})
+def index(request):
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products': products})

@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VegEase Clone</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">VegEase</div>
+        <div class="location">📍 Location Required</div>
+        <input type="text" placeholder="Search Products..." class="search-box">
+        <div class="nav-icons">
+            <span class="cart">🛒</span>
+            <span class="user">👤</span>
+        </div>
+    </nav>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2>CATEGORIES</h2>
+        <p>Discover boundless choices with over 500+ handpicked products</p>
+        <div class="category-grid">
+            <div class="category-card"><img src="{% static 'images/exotic fruits.png' %}"><p>Exotic Fruits</p></div>
+            <div class="category-card"><img src="{% static 'images/exotic vegitables.png' %}"><p>Exotic Vegetables</p></div>
+            <div class="category-card"><img src="{% static 'images/fresh fruits.png' %}"><p>Fresh Fruits</p></div>
+            <div class="category-card"><img src="{% static 'images/fresh vegitables.png' %}"><p>Fresh Vegetables</p></div>
+            <div class="category-card"><img src="{% static 'images/summer herbs.png' %}"><p>Leaf & Herbs</p></div>
+            <div class="category-card"><img src="{% static 'images/summer deals.png' %}"><p>Summer Deals</p></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <h2>Check This Out 🐥</h2>
+<div class="product-grid">
+  {% for product in products %}
+    <div class="card">
+      {% if product.discount %}
+        <div class="discount">{{ product.discount }}% Off</div>
+      {% endif %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.quantity }}</p>
+      <div class="price">
+        <span class="old-price">₹{{ product.original_price }}</span><br>
+        <span class="new-price">₹{{ product.discounted_price }}</span>
+      </div>
+      <button class="add-btn">Add</button>
+    </div>
+  {% endfor %}
+</div>
+<!-- Footer -->
+<footer style="background-color: #f4f4f4; padding: 40px 20px; margin-top: 60px; font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto;">
+
+    <!-- Contact Us -->
+    <div style="flex: 1 1 250px; margin-bottom: 20px;">
+      <h4>Contact Us</h4>
+      <p>📧 support@vegease.in</p>
+      <p>📱 +7034064303</p>
+      <p>📍 5th Floor, 362-363, Rao Gajraj Singh Marg, Phase IV,<br> Udyog Vihar, Sector 18, Gurugram, Haryana 122016</p>
+    </div>
+
+    <!-- Company -->
+    <div style="flex: 1 1 150px; margin-bottom: 20px;">
+      <h4>Company</h4>
+      <p>About</p>
+      <p>Media Coverage</p>
+      <p>Blog</p>
+    </div>
+
+    <!-- For You -->
+    <div style="flex: 1 1 150px; margin-bottom: 20px;">
+      <h4>For You</h4>
+      <p>Contact Us</p>
+      <p>Privacy Policy</p>
+      <p>Terms And Conditions</p>
+    </div>
+
+    <!-- Location -->
+    <div style="flex: 1 1 150px; margin-bottom: 20px;">
+      <h4>Location</h4>
+      <p>Dwarka</p>
+      <p>Gurgaon</p>
+      <p>Noida</p>
+    </div>
+  </div>
+
+  <hr style="margin: 20px auto; max-width: 1200px;">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; max-width: 1200px; margin: auto;">
+    <p>© VegEase. Powered by Egreen, India. All rights reserved</p>
+    <div style="font-size: 18px;">
+      <!-- Replace these with real links or font-awesome icons -->
+      <span style="margin-right: 10px;">📘</span>
+      <span style="margin-right: 10px;">🐦</span>
+      <span style="margin-right: 10px;">▶️</span>
+      <span style="margin-right: 10px;">📸</span>
+      <span>💼</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
