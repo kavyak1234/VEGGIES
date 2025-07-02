@@ -12,7 +12,10 @@
     <nav class="navbar">
         <div class="logo">VegEase</div>
         <div class="location">📍 Location Required</div>
+        <form method="GET" action="{% url 'search' %}">
         <input type="text" placeholder="Search Products..." class="search-box">
+        <button type="submit">🔍</button>
+</form>
         <div class="nav-icons">
             <span class="cart">🛒</span>
             <span class="user">👤</span>
@@ -24,7 +27,13 @@
         <h2>CATEGORIES</h2>
         <p>Discover boundless choices with over 500+ handpicked products</p>
         <div class="category-grid">
+           <a href="{% url 'category' 'Exotic Fruits' %}">
             <div class="category-card"><img src="{% static 'images/exotic fruits.png' %}"><p>Exotic Fruits</p></div>
+            <a href="{% url 'category' 'Exotic Fruits' %}">
+  
+    <p>Exotic Fruits</p>
+  </div>
+</a>
             <div class="category-card"><img src="{% static 'images/exotic vegitables.png' %}"><p>Exotic Vegetables</p></div>
             <div class="category-card"><img src="{% static 'images/fresh fruits.png' %}"><p>Fresh Fruits</p></div>
             <div class="category-card"><img src="{% static 'images/fresh vegitables.png' %}"><p>Fresh Vegetables</p></div>

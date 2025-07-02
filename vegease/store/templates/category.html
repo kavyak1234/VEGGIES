@@ -1,0 +1,13 @@
+<h2>{{ category_name }}</h2>
+
+<div class="product-grid">
+  {% for product in products %}
+    <div class="product-card">
+      <img src="{{ product.image.url }}" width="150" />
+      <p>{{ product.name }}</p>
+      <p>₹{{ product.discounted_price }}</p>
+    </div>
+  {% empty %}
+    <p>No products found in this category.</p>
+  {% endfor %}
+</div>
